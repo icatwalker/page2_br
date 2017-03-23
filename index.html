@@ -21,7 +21,7 @@
             <p>
                 <a href="#picture" class="mui-btn mui-btn-primary
     		mui-btn-block mui-btn-info" id="info"
-                   style="padding: 5px 20px;width:100%">选择任务类型<i>*</i></a>
+                   style="padding: 5px 20px;width:100%">选择任务类型</a>
             </p>
             <div class="mui-input-row" style="height:0">
                 <div id="picture" class="mui-popover mui-popover-action mui-popover-bottom" style="display: none;">
@@ -53,7 +53,7 @@
             </div>
             <div class="mui-input-row">
                 <label>项目编号：</label>
-                <input type="text" placeholder="mxj123" disabled>
+                <input type="text" placeholder="mxj123" disabled id="itemNum" name="itemNum">
             </div>
             <div class="mui-card" id="type01">
                 <ul class="mui-table-view mui-table-view-radio">
@@ -74,15 +74,15 @@
                 <form class="mui-input-group">
                     <div class="mui-input-row ">
                         <label for="beginTime">起始时间：</label>
-                        <input type="datetime-local" name="beginDate" id="beginTime" value=""/>
+                        <input type="datetime-local" name="beginTime" id="beginTime" value=""/>
                     </div>
                     <div class="mui-input-row">
                         <label for="endTime">结束时间：</label>
-                        <input type="datetime-local" name="endDate" id="endTime" value=""/>
+                        <input type="datetime-local" name="endTime" id="endTime" value=""/>
                     </div>
                     <div class="mui-input-row">
                         <label for="totalTime">共计：</label>
-                        <input type="text" value="1天" id="totalTime" disabled/>
+                        <input type="text" value="1天" id="totalTime" disabled name="totalTime"/>
                     </div>
 
                 </form>
