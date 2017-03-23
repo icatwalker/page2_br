@@ -37,7 +37,7 @@ mui('body').on('tap', '.mui-popover-action li>a', function () {
 //	更新任务名称
     var userName = "孟祥吉";
 //	var n=a.innerHTML;
-    var nType = "[" + (a.innerHTML == "<b>取消</b>" ? a.innerHTML = "" : a.innerHTML) + "]";
+    var nType = "[" + (a.innerHTML == "<b>取消</b>" ? a.innerHTML = "<b>取消</b>" : a.innerHTML) + "]";
 
 //	日期
     function wantedDateTime(n) {
@@ -121,3 +121,4 @@ mui('body').on('tap', '.mui-popover-action li>a', function () {
 
 //选择类型页面会切换
 
+mui([href="#picture"]).innerHTML="取消";
