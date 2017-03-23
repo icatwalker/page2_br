@@ -99,7 +99,7 @@ mui('body').on('tap', '.mui-popover-action li>a', function () {
                 d3 = ((d2 - d1) / (60 * 60 * 1000)).toFixed(2) + "小时";
             } else if (d3 >=8 && d3<=24 ) {
                 d3 = "1天";
-            } else if(d3>24&& d3<48){
+            } else if(d3>24&& d3<32){
                 d3=((d2-d1)/(24*60*60*1000)).toFixed(0)+"天";
             }else if(d3>=48){
                 d3=((d2-d1)/(24*60*60*1000)).toFixed(0)+"天";
@@ -107,10 +107,9 @@ mui('body').on('tap', '.mui-popover-action li>a', function () {
                 d3="你回不到过去";
             }
             console.log(d3);
-            document.getElementById("totalTime").value = d3;
+            //document.getElementById("totalTime").value = d3;
         }else{
-
-            document.getElementById("totalTime").value = "起、止时间不对";
+            //document.getElementById("totalTime").value = "起、止时间不对";
         }
 
     }
