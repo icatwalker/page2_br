@@ -74,7 +74,6 @@ mui('body').on('tap', '.mui-popover-action li>a', function () {
 //	info.placeholder=;
     info.innerHTML = taskName;
     //taskType.value=nType;
-
     //       昨天、今天改时间
     mui("#yesterday0").on("tap", "a", function () {
         info.innerHTML = nType + userName + wantedDateTime(-1);
@@ -88,25 +87,32 @@ mui('body').on('tap', '.mui-popover-action li>a', function () {
     beginTime.value = wantedDateTime(0);
     endTime.value = wantedDateTime(0);
 
+
     function useTime() {
-        var d1 = parseFloat(new Date(beginTime.value).getTime());
-        var d2 = parseFloat(new Date(endTime.value).getTime());
-        console.log(d1);
-        console.log(d2);
-        var d3 = (d2 - d1) / (60 * 60 * 1000);
-        if (d3 < 8 && d3 > 0) {
-            d3 = ((d2 - d1) / (60 * 60 * 1000)).toFixed(2) + "小时";
-        } else if (d3 >=8 && d3<=24 ) {
-            d3 = "1天";
-        } else if(d3>24&& d3<48){
-            d3=((d2-d1)/(24*60*60*1000)).toFixed(0)+"天";
-        }else if(d3>=48){
-            d3=((d2-d1)/(24*60*60*1000)).toFixed(0)+"天";
-        }else if(d3<0){
-            d3="你回不到过去";
+        if(correctTime(beginTime.value)&&correctTime(endTime.value)){
+            var d1 = parseFloat(new Date(beginTime.value).getTime());
+            var d2 = parseFloat(new Date(endTime.value).getTime());
+            console.log(d1);
+            console.log(d2);
+            var d3 = (d2 - d1) / (60 * 60 * 1000);
+            if (d3 < 8 && d3 > 0) {
+                d3 = ((d2 - d1) / (60 * 60 * 1000)).toFixed(2) + "小时";
+            } else if (d3 >=8 && d3<=24 ) {
+                d3 = "1天";
+            } else if(d3>24&& d3<48){
+                d3=((d2-d1)/(24*60*60*1000)).toFixed(0)+"天";
+            }else if(d3>=48){
+                d3=((d2-d1)/(24*60*60*1000)).toFixed(0)+"天";
+            }else if(d3<0){
+                d3="你回不到过去";
+            }
+            console.log(d3);
+            document.getElementById("totalTime").value = d3;
+        }else{
+
+            document.getElementById("totalTime").value = "起、止时间不对";
         }
-        console.log(d3);
-        document.getElementById("totalTime").value = d3;
+
     }
 
     beginTime.onchange = function () {
@@ -121,4 +127,41 @@ mui('body').on('tap', '.mui-popover-action li>a', function () {
 
 //选择类型页面会切换
 
-mui([href="#picture"]).innerHTML="取消";
+//判断日期和时间在工作时间
+//1.时间在8:30-16:00  .2在工作日
+function correctTime(n){
+    var b = n.split("T");
+    function correctDate(){
+        var m = parseInt(new Date(b[0]).getDay());
+        console.log(m);
+
+        if (m >= 1 && m <= 5) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function correctTimes() {
+        var n=b[1].split(":");
+        var h=parseInt(n[0]);
+        var mi=parseInt(n[1]);
+        if(h>=9&&h<=17){
+            return true;
+        }else if(h==8&& mi>=30){
+            return true;
+        }else if(h==18&& mi==0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    if(correctDate()&&correctTimes()){
+        return true;
+    }else{return false}
+}
+
+if(correctTime("2017-03-24T18:00")){
+    console.log("true");
+}else{
+    console.log("false");
+}
