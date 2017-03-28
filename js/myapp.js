@@ -87,7 +87,6 @@ mui('body').on('tap', '.mui-popover-action li>a', function () {
     beginTime.value = wantedDateTime(0);
     endTime.value = wantedDateTime(0);
 
-
     function useTime() {
         if(correctTime(beginTime.value)&&correctTime(endTime.value)){
             var d1 = parseFloat(new Date(beginTime.value).getTime());
@@ -113,7 +112,6 @@ mui('body').on('tap', '.mui-popover-action li>a', function () {
         }
 
     }
-
     beginTime.onchange = function () {
         useTime();
     };
